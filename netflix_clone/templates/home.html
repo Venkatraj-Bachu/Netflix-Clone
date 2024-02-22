@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/2d6d24aff9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'assets/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/styles.css' %}" />
+    <title>Netflix - Watch TV Shows Online, Watch Movies Online</title>
+  </head>
+  <body>
+    <div class="navbar" id="nav">
+      <a class="navbar-left" href="#"
+        ><img
+          class="navbar-logo"
+          src="{% static 'assets/images/Netflix_Logo.png' %}"
+          alt=""
+      /></a>
+      <a class="navbar-left" href="#">Home</a>
+      <a class="navbar-left" href="#">TV Shows</a>
+      <a class="navbar-left" href="#">Movies</a>
+      <a class="navbar-left" href="#">New & Popular</a>
+      <a class="navbar-left" href="#">My List</a>
+      <a class="navbar-left" href="#">Browse by Languages</a>
+      <a class="navbar-right" href="#">Search</a>
+      <a class="navbar-right" href="#">Noifications</a>
+      <a class="navbar-right" href="#"><i class="fa-solid fa-bars ham"></i></a>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner">
+      <div class="banner-contents">
+        <h1 class="banner-title">Salaar: Part1-Ceasefire</h1>
+        <div class="banner-buttons">
+          <button class="banner-button">Play</button>
+          <button class="banner-button">My List</button>
+        </div>
+        <div class="banner-description">
+          Brace yourself for an extraordinary tale of rebellion filled with
+          power-packed action.
+        </div>
+      </div>
+      <div class="banner-fade-bottom"></div>
+    </div>
+
+    <!-- Movies -->
+    <!-- Netflix Originals -->
+    <div class="row">
+      <h2>Netflix Originals</h2>
+      <div class="row-posters film-card">
+        {% for original in originals %}
+        <img
+          src="{{original.image_card.url}}"
+          alt=""
+          class="row-poster row-posterLarge"
+          style="height: auto; width: auto"
+          movie-title="{{original.title}}"
+          movie-image="{{original.image_card}}"
+          movie-video-url="/movie/?movie_id={{ original.uu_id }}"
+        />
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Trending Now -->
+    <div class="row">
+      <h2>Trending Now</h2>
+      <div class="row-posters">
+        {% for movie in movies %}
+        <a href="/movie"
+          ><img
+            src="{{movie.image_card.url}}"
+            alt=""
+            class="row-poster"
+            style="height: auto; width: auto"
+        /></a>
+        {% endfor %}
+        <!-- <img
+          src="{% static 'assets/images/small-movie1.jpg' %}"
+          alt=""
+          class="row-poster"
+        /> -->
+      </div>
+    </div>
+
+    <!-- Top Rated -->
+    <div class="row">
+      <h2>Top Rated</h2>
+      <div class="row-posters">
+        {% for top_rated in top_rated_movies %}
+        <a href="{{top_rated.link}}"
+          ><img src="{{top_rated.image_card.url}}" alt="" class="row-poster"
+        /></a>
+        {% endfor %}
+        <img
+          src="{% static 'assets/images/small-movie1.jpg' %}"
+          alt=""
+          class="row-poster"
+        />
+      </div>
+    </div>
+    <footer class="footer">
+      <p>Questions? Call 1-844-505-2993</p>
+      <div class="footer-cols">
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">Buy Gift Cards</a></li>
+          <li><a href="#">Cookie Preferences</a></li>
+          <li><a href="#">Legal Notices</a></li>
+        </ul>
+        <ul>
+          <li><a href="#"> Help Center</a></li>
+          <li><a href="#"> Jobs</a></li>
+          <li><a href="#"> Ways to Watch</a></li>
+          <li><a href="#">Corporate Information</a></li>
+          <li><a href="#"> Only on Netflix</a></li>
+        </ul>
+        <ul>
+          <li><a href="#"> Account</a></li>
+          <li><a href="#"> Netflix Shop</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#"> Do Not Sell or Share My Personal Information</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">Media Center</a></li>
+          <li><a href="#"> Redeem Gift Cards</a></li>
+          <li><a href="#"> Privacy</a></li>
+          <li><a href="#"> Speed Test</a></li>
+          <li><a href="#">Ad Choices</a></li>
+        </ul>
+      </div>
+    </footer>
+    <script>
+      const nav = document.getElementById("nav");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY >= 100) {
+          nav.classList.add("nav-black");
+        } else {
+          nav.classList.remove("nav-black");
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".row-poster").forEach(function (movie) {
+          movie.addEventListener("click", function () {
+            var movie_video_url = this.getAttribute("movie-video-url");
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", movie_video_url, true);
+
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.responseText);
+              }
+            };
+            xhr.send();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

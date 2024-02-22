@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/2d6d24aff9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'assets/styles.css' %}" />
+    <title>Netflix - Watch TV Shows Online, Watch Movies Online</title>
+  </head>
+  <body>
+    <header class="showcase">
+      <div class="showcase-top">
+        <img
+          src="{% static 'assets/images/Netflix_Logo.png' %}"
+          alt="Netflix"
+        />
+        <a href="/login" class="btn btn-rounded">Sign In</a>
+      </div>
+      <div class="showcase-content">
+        <h1 class="text-xl">See what's next</h1>
+        <p class="text-md">Watch anywhere. Cancel anytime</p>
+        <a href="/signup" class="btn btn-xl">
+          Watch Free For 30 Days <i class="fas fa-chevron-right btn-icon"></i>
+        </a>
+      </div>
+    </header>
+
+    <section class="tabs">
+      <div class="container">
+        <div id="tab-1" class="tab-item tab-border">
+          <i class="fas fa-door-open fa-3x"></i>
+          <p class="hide-sm">Cancel Anytime</p>
+        </div>
+        <div id="tab-2" class="tab-item">
+          <i class="fas fa-tablet-alt fa-3x"></i>
+          <p class="hide-sm">Watch Anywhere</p>
+        </div>
+        <div id="tab-3" class="tab-item">
+          <i class="fas fa-children fa-3x"></i>
+          <p class="hide-sm">Create Profile for Kids</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-content">
+      <div class="container">
+        <!-- Tab Content 1-->
+        <div id="tab-1-content" class="tab-content-item show">
+          <div class="tab-1-content-inner">
+            <div>
+              <p class="text-lg">
+                It you decide Netflix is'nt for you - no problem. No commitment.
+                Cancel online anytime.
+              </p>
+              <a href="#" class="btn btn-lg">Watch Free For 30 Days</a>
+            </div>
+            <img
+              src="{% static 'assets/images/tab-content-1-image.jpg' %}"
+              alt=""
+            />
+          </div>
+        </div>
+        <!-- Tab Content 2-->
+        <div id="tab-2-content" class="tab-content-item">
+          <div class="tab-2-content-inner">
+            <div>
+              <p class="text-lg">
+                Stream unlimited movies and TV shows on your phone, tablet,
+                laptop, and TV.
+              </p>
+              <a href="#" class="btn btn-lg">Watch Free For 30 Days</a>
+            </div>
+            <img
+              src="{% static 'assets/images/watch-anywhere.webp' %}"
+              alt=""
+            />
+          </div>
+        </div>
+        <!-- Tab Content 3-->
+        <div id="tab-3-content" class="tab-content-item">
+          <div class="tab-3-content-inner">
+            <div>
+              <p class="text-lg">
+                Send kids on adventures with their favorite characters in a
+                space made just for them—free with your membership.
+              </p>
+              <a href="#" class="btn btn-lg">Watch Free For 30 Days</a>
+            </div>
+            <img src="{% static 'assets/images/kids.png' %}" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Questions? Call 1-844-505-2993</p>
+      <div class="footer-cols">
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">Buy Gift Cards</a></li>
+          <li><a href="#">Cookie Preferences</a></li>
+          <li><a href="#">Legal Notices</a></li>
+        </ul>
+        <ul>
+          <li><a href="#"> Help Center</a></li>
+          <li><a href="#"> Jobs</a></li>
+          <li><a href="#"> Ways to Watch</a></li>
+          <li><a href="#">Corporate Information</a></li>
+          <li><a href="#"> Only on Netflix</a></li>
+        </ul>
+        <ul>
+          <li><a href="#"> Account</a></li>
+          <li><a href="#"> Netflix Shop</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#"> Do Not Sell or Share My Personal Information</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">Media Center</a></li>
+          <li><a href="#"> Redeem Gift Cards</a></li>
+          <li><a href="#"> Privacy</a></li>
+          <li><a href="#"> Speed Test</a></li>
+          <li><a href="#">Ad Choices</a></li>
+        </ul>
+      </div>
+    </footer>
+    <script src="{% static 'assets/main.js' %}"></script>
+  </body>
+</html>
